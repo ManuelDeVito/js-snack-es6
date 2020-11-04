@@ -1,9 +1,11 @@
-// JSnack3: A partire da un array di oggetti, creare una copia dell'array e aggiungere ai singoli elementi dell'array una nuova proprietà "position" che contiene una lettera casuale.
+// JSnack3: A partire da un array di oggetti, creare una copia dell'array e aggiungere ai singoli elementi dell'array una nuova proprietà "position" che contiene una lettera casuale. non dobbiamo modificare l'array inziale.
+
+// Usiamo arrow function, map e...
 
 
 $(document).ready(function(){
 
-    var oggetti = [
+    const oggetti = [
 
         {
             'nome': 'Orologio',
@@ -23,43 +25,37 @@ $(document).ready(function(){
 
     ];
 
-//     var oggetti_copia = [];
-//
-//     for (var i = 0; i < oggetti.length; i++) {
-//
-//         var oggetto_corrente = oggetti[i];
-//
-//         var nuovo_oggetto_copia = {
-//
-//             'nome' : oggetto_corrente['nome'],
-//             'marca' : oggetto_corrente['marca'],
-//             'prezzo' : oggetto_corrente['prezzo'],
-//             'peso' : 90
-//
-//         };
-//
-//         oggetti_copia.push(nuovo_oggetto_copia);
-//     }
-//
-//     // console.log('oggetti originali');
-//     // console.log(oggetti);
-//     // console.log('oggetti originali copia');
-//     // console.log(oggetti_copia);
-//
-//     var alfabeto = 'abcdefghijklmnopqrstuvwxyz';
-//
-//     var posizione = getRndInteger(0, 25);
-//     console.log(posizione);
-//
-//     var lettera_casuale = alfabeto.charAt(posizione);
-//
-//     console.log(lettera_casuale);
-//
-//
-//
-// function getRndInteger(min, max) {
-// return Math.floor(Math.random() * (max - min + 1) ) + min;
-// }
+
+
+    const numero_random = (min, max) => {
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    const lettera_random = () => {
+
+        const lettere = 'abcdefghijklmnopqrstuvwxyz';
+        const lettera = lettere[numero_random(0, lettere.length -1)];
+
+        console.log('La lettera generata è: ',  lettera);
+
+        return lettera;
+    };
+
+
+    const nuovi_oggetti_copia = oggetti.map((elementi) => {
+
+        const nuovo_elemento = {
+            ...elementi,
+            position: lettera_random()
+        };
+    
+        return nuovo_elemento;
+
+    });
+
+    console.log('Gli oggetti originali sono: ', oggetti);
+    console.log('Gli oggetti copiati sono: ' , nuovi_oggetti_copia);
 
 
 });

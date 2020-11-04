@@ -9,14 +9,11 @@ $(document).ready(function(){
     const primo_numero = parseInt(prompt('Inserisci un numero compreso tra 0 e 7'));
     const secondo_numero = parseInt(prompt('Inserisci un numero compreso tra 0 e 7'));
 
-    const array_utente = []
 
     const nomi_utente = nomi.filter((element, i) => {
-        return primo_numero <= i && secondo_numero => i;
+        return primo_numero <= i && secondo_numero >= i;
     });
 
-    console.log(array_utente);
-
-
+    console.log(nomi_utente);
 
 })
